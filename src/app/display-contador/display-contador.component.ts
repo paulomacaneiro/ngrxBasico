@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { IAppState } from '../store/app.state';
 
 @Component({
   selector: 'app-display-contador',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DisplayContadorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store:Store<{ app: IAppState}>) { }
   counter = 0;
+  counter$ = this.store.select('app', 'counter');
+
   ngOnInit(): void {
   }
+
 
 }
